@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.809.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SplitProjectApp", "SplitProjectApp\SplitProjectApp.csproj", "{FF73D25C-ADD4-4D23-9576-6F76F7755CEA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF73D25C-ADD4-4D23-9576-6F76F7755CEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF73D25C-ADD4-4D23-9576-6F76F7755CEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF73D25C-ADD4-4D23-9576-6F76F7755CEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF73D25C-ADD4-4D23-9576-6F76F7755CEA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A759BA8-AF9E-4153-9A1C-07722E4EE087}
+	EndGlobalSection
+EndGlobal
