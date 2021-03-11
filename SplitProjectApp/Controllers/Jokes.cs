@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Splitio.Services.Client.Classes;
 using SplitProjectApp.Data;
 using SplitProjectApp.Models;
 
@@ -13,17 +14,39 @@ namespace SplitProjectApp.Controllers
 {
     public class Jokes : Controller
     {
+
         private readonly ApplicationDbContext _context;
 
-        public Jokes(ApplicationDbContext context)
+        private readonly SplitClient _splitClient;
+
+        public Jokes(ApplicationDbContext context, SplitClient splitClient)
         {
             _context = context;
+            _splitClient = splitClient;
         }
 
         // GET: Jokes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Joke.ToListAsync());
+            var treatment = _splitClient.GetTreatment("split@split.io",
+                                   "Sample_App");
+
+            if (treatment == "on")
+            {
+                //show dev jokes only
+                return View(await _context.Joke.Where(x => x.IsDev.Equals(true)).ToListAsync());
+            }
+            else if (treatment == "off")
+            {
+                // show other jokes
+                return View(await _context.Joke.Where(x => x.IsDev.Equals(false)).ToListAsync());
+            }
+            else
+            {
+                // insert control code here - show all jokes
+                return View(await _context.Joke.ToListAsync());
+            }
+            
         }
 
         // GET: Jokes/Details/5
@@ -57,7 +80,7 @@ namespace SplitProjectApp.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,JokeQuestion,JokeAnswer")] Joke joke)
+        public async Task<IActionResult> Create([Bind("Id,JokeQuestion,JokeAnswer, IsDev")] Joke joke)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +114,7 @@ namespace SplitProjectApp.Controllers
         [HttpPost]
         [Authorize]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,JokeQuestion,JokeAnswer")] Joke joke)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,JokeQuestion,JokeAnswer, IsDev")] Joke joke)
         {
             if (id != joke.Id)
             {

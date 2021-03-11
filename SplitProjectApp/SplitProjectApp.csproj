@@ -17,7 +17,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.12" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.12" />
-    <PackageReference Include="Splitio" Version="6.2.3" />
     <PackageReference Include="Splitio-net-core" Version="6.2.3" />
   </ItemGroup>
 

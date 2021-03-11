@@ -17,24 +17,24 @@ namespace SplitProjectApp
         }
         public SplitClient GetSplitClient()
         {
-            if (this.Factory is null)
+            if (this.factory is null)
             {
                 GetFactoryInstance();
             }
-            return this.Client;
+            return this.client;
         }
         void GetFactoryInstance()
         {
             var config = new ConfigurationOptions();
             //            config.MetricsRefreshRate = 18000;
-            this.Factory = new SplitFactory(this.apiKey, config);
-            this.Client = (SplitClient)this.Factory.Client();
-            this.Client.BlockUntilReady(10000);
+            this.factory = new SplitFactory(this.apiKey, config);
+            this.client = (SplitClient)this.factory.Client();
+            this.client.BlockUntilReady(10000);
 
         }
-        void Destry()
+        void Destroy()
         {
-            this.Factory.Client().Destroy();
+            this.factory.Client().Destroy();
         }
     }
 }

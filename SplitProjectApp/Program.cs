@@ -18,10 +18,6 @@ namespace SplitProjectApp
         {
             CreateHostBuilder(args).Build().Run();
 
-            /*
-             * The SplitClient should be instantiated as a singleton and injected
-             * wherever a new feature is being rolled-out.
-             */
             var config = new ConfigurationOptions();
 
             var factory = new SplitFactory("4u0ej9v4crbmbqsofb475rcl63jkmlki8hsh", config);
@@ -34,21 +30,6 @@ namespace SplitProjectApp
             {
                 // log & handle
                 Console.WriteLine(ex);
-            }
-
-            var treatment = splitClient.GetTreatment(user_id, "Sample_App");
-
-            if (treatment == "on")
-            {
-                // insert on code here
-            }
-            else if (treatment == "off")
-            {
-                // insert off code here
-            }
-            else
-            {
-                // insert control code here
             }
         }
 
